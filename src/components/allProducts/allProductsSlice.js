@@ -34,5 +34,5 @@ const allProducts = createSlice({
   },
 });
 
-export const selectAllProducts = (state) => state.AllProducts.products;
+export const selectAllProducts = (state) => state.allProducts.products;
 export default allProducts.reducer;

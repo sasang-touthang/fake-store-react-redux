@@ -4,7 +4,7 @@ import favoriteProductsReducer from "../components/favoriteProducts/favoriteProd
 import searchTermReducer from "../components/searchTerm/searchTermSlice";
 
 export default configureStore({
-  reducers: {
+  reducer: {
     allProducts: allProductsReducer,
     favoriteProduct: favoriteProductsReducer,
     searchTerm: searchTermReducer,
