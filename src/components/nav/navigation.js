@@ -1,4 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { selectSearchTerm } from "../searchTerm/searchTermSlice";
+import { setSearchTerm, clearSearchTerm } from "../searchTerm/searchTermSlice";
 
 const Navbar = styled.div`
   display: flex;
@@ -32,9 +35,25 @@ const InputText = styled.input`
 `;
 
 function NavBar() {
+  const searchTerm = useSelector(selectSearchTerm);
+  const dispatch = useDispatch();
+
+  const onSearchChangeHandler = (e) => {
+    dispatch(setSearchTerm(e.target.value));
+  };
+
+  const onSearchClearHandler = () => {
+    dispatch(clearSearchTerm());
+  };
+
   return (
     <Navbar>
-      <InputText placeholder="What are you looking for?"></InputText>
+      <InputText
+        type="text"
+        value={searchTerm}
+        onChange={onSearchChangeHandler}
+        placeholder="What are you looking for?"
+      />
     </Navbar>
   );
 }

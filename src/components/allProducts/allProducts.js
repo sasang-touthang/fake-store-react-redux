@@ -1,7 +1,13 @@
-import { useSelector } from "react-redux";
-import { selectAllProducts } from "./allProductsSlice";
+import { useDispatch, useSelector } from "react-redux";
 import Product from "../Product/product";
 import styled from "styled-components";
+import {
+  selectFilteredAllProducts,
+  selectAllProducts,
+} from "./allProductsSlice";
+import { addFavoriteProduct } from "../favoriteProducts/favoriteProductsSlice";
+import { removeProduct } from "./allProductsSlice";
+import { selectFavoriteProducts } from "../favoriteProducts/favoriteProductsSlice";
 
 const AllProductsContainer = styled.div`
   display: flex;
@@ -10,19 +16,28 @@ const AllProductsContainer = styled.div`
 `;
 
 const AllProducts = () => {
-  const allProducts = useSelector(selectAllProducts);
+  const allProducts = useSelector(selectFilteredAllProducts);
+  const dispatch = useDispatch();
+
+  const onAddFavoriteProductHandler = (product) => {
+    dispatch(addFavoriteProduct(product));
+    dispatch(removeProduct(product));
+  };
 
   return (
     <>
-      <h1 style={{ "margin-left": "20px" }}>All Products</h1>
+      <h1 style={{ marginLeft: "20px" }}>All Products</h1>
       <AllProductsContainer>
         {allProducts.map((product) => (
           <Product
+            key={product.id}
             id={product.id}
             title={product.title}
             price={product.price}
             description={product.description}
             image={product.image}
+            onClickHandler={() => onAddFavoriteProductHandler(product)}
+            addToFavorites="Add to Favorites"
           />
         ))}
       </AllProductsContainer>

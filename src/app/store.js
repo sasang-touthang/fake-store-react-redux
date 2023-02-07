@@ -6,7 +6,7 @@ import searchTermReducer from "../components/searchTerm/searchTermSlice";
 export default configureStore({
   reducer: {
     allProducts: allProductsReducer,
-    favoriteProduct: favoriteProductsReducer,
+    favoriteProducts: favoriteProductsReducer,
     searchTerm: searchTermReducer,
   },
 });
