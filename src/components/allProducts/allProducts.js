@@ -2,12 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Product from "../Product/product";
 import styled from "styled-components";
 import {
-  selectFilteredAllProducts,
-  selectAllProducts,
+  selectFilteredAllProducts
 } from "./allProductsSlice";
 import { addFavoriteProduct } from "../favoriteProducts/favoriteProductsSlice";
 import { removeProduct } from "./allProductsSlice";
-import { selectFavoriteProducts } from "../favoriteProducts/favoriteProductsSlice";
 
 const AllProductsContainer = styled.div`
   display: flex;
