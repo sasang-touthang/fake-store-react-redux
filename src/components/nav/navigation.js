@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { selectSearchTerm } from "../searchTerm/searchTermSlice";
-import { setSearchTerm, clearSearchTerm } from "../searchTerm/searchTermSlice";
+import { setSearchTerm } from "../searchTerm/searchTermSlice";
 
 const Navbar = styled.div`
   display: flex;
@@ -40,10 +40,6 @@ function NavBar() {
 
   const onSearchChangeHandler = (e) => {
     dispatch(setSearchTerm(e.target.value));
-  };
-
-  const onSearchClearHandler = () => {
-    dispatch(clearSearchTerm());
   };
 
   return (
